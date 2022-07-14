@@ -206,21 +206,21 @@
     </script>
 </body>
 <script>
-    const play = document.querySelector("#play")
-    const dom = document.querySelector(".currentTrack");
-    let sum = 0; // 当前播放进度
+    const play = document.querySelector('#play')
+    const dom = document.querySelector('.currentTrack')
+    let sum = 0 // 当前播放进度
     let intervalContext = null
-    play.addEventListener("click", () => {
+    play.addEventListener('click', () => {
         if (intervalContext === null) {
             intervalContext = setInterval(() => {
-                sum++;
-                dom.style["max-width"] = `${sum}%`
+                sum++
+                dom.style['max-width'] = `${ sum }%`
                 if (sum >= 100) {
-                    sum = 0;
-                    clearInterval(intervalContext);
+                    sum = 0
+                    clearInterval(intervalContext)
                     intervalContext = null
                 }
-            }, 1000)
+            }, 200)
         }
     })
 </script>
