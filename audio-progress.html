@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .audioBox {
+            width: 600px;
+            height: 100px;
+            position: relative;
+            background-color: #2f2e2e;
+        }
+
+        .trackBox {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            height: 50%;
+            width: 500px;
+            right: 16px;
+        }
+
+        .track {
+            position: absolute;
+            left: 0;
+            height: 100%;
+            width: 500px;
+        }
+
+
+        .allTrack {
+            display: flex;
+            align-items: center;
+        }
+
+        .trackItem {
+            width: 6px;
+            border-radius: 8px;
+            height: 40px;
+            margin-right: 3px;
+            background-color: #fff;
+        }
+
+        .currentTrack {
+            z-index: 10;
+            width: 100%;
+            overflow: hidden;
+            transition: all 0.21s;
+            max-width: 0%;
+        }
+
+        .currentTrack>div {
+            height: 100%;
+            min-width: 500px;
+            display: flex;
+            align-items: center;
+            /* background-color: rgb(32, 177, 32); */
+        }
+
+        .currentTrack>div>.trackItem {
+            background-color: rgb(32, 177, 32);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="audioBox">
+        <div class="trackBox">
+            <div class="track allTrack">
+                <div class="trackItem"></div>
+                <div class="trackItem"></div>
+                <div class="trackItem"></div>
+                <div class="trackItem"></div>
+                <div class="trackItem"></div>
+                <div class="trackItem"></div>
+                <div class="trackItem"></div>
+                <div class="trackItem"></div>
+                <div class="trackItem"></div>
+                <div class="trackItem"></div>
+                <div class="trackItem"></div>
+                <div class="trackItem"></div>
+                <div class="trackItem"></div>
+                <div class="trackItem"></div>
+                <div class="trackItem"></div>
+                <div class="trackItem"></div>
+                <div class="trackItem"></div>
+                <div class="trackItem"></div>
+                <div class="trackItem"></div>
+                <div class="trackItem"></div>
+                <div class="trackItem"></div>
+                <div class="trackItem"></div>
+                <div class="trackItem"></div>
+                <div class="trackItem"></div>
+                <div class="trackItem"></div>
+                <div class="trackItem"></div>
+                <div class="trackItem"></div>
+                <div class="trackItem"></div>
+                <div class="trackItem"></div>
+                <div class="trackItem"></div>
+                <div class="trackItem"></div>
+                <div class="trackItem"></div>
+                <div class="trackItem"></div>
+                <div class="trackItem"></div>
+                <div class="trackItem"></div>
+                <div class="trackItem"></div>
+                <div class="trackItem"></div>
+                <div class="trackItem"></div>
+                <div class="trackItem"></div>
+                <div class="trackItem"></div>
+                <div class="trackItem"></div>
+                <div class="trackItem"></div>
+                <div class="trackItem"></div>
+            </div>
+            <div class="track currentTrack">
+                <div>
+                    <div class="trackItem"></div>
+                    <div class="trackItem"></div>
+                    <div class="trackItem"></div>
+                    <div class="trackItem"></div>
+                    <div class="trackItem"></div>
+                    <div class="trackItem"></div>
+                    <div class="trackItem"></div>
+                    <div class="trackItem"></div>
+                    <div class="trackItem"></div>
+                    <div class="trackItem"></div>
+                    <div class="trackItem"></div>
+                    <div class="trackItem"></div>
+                    <div class="trackItem"></div>
+                    <div class="trackItem"></div>
+                    <div class="trackItem"></div>
+                    <div class="trackItem"></div>
+                    <div class="trackItem"></div>
+                    <div class="trackItem"></div>
+                    <div class="trackItem"></div>
+                    <div class="trackItem"></div>
+                    <div class="trackItem"></div>
+                    <div class="trackItem"></div>
+                    <div class="trackItem"></div>
+                    <div class="trackItem"></div>
+                    <div class="trackItem"></div>
+                    <div class="trackItem"></div>
+                    <div class="trackItem"></div>
+                    <div class="trackItem"></div>
+                    <div class="trackItem"></div>
+                    <div class="trackItem"></div>
+                    <div class="trackItem"></div>
+                    <div class="trackItem"></div>
+                    <div class="trackItem"></div>
+                    <div class="trackItem"></div>
+                    <div class="trackItem"></div>
+                    <div class="trackItem"></div>
+                    <div class="trackItem"></div>
+                    <div class="trackItem"></div>
+                    <div class="trackItem"></div>
+                    <div class="trackItem"></div>
+                    <div class="trackItem"></div>
+                    <div class="trackItem"></div>
+                    <div class="trackItem"></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <button id="play">开始播放</button>
+</body>
+<script>
+    const play = document.querySelector("#play")
+    const dom = document.querySelector(".currentTrack");
+    let sum = 0; // 当前播放进度
+    let intervalContext = null
+    play.addEventListener("click", () => {
+        if (intervalContext === null) {
+            intervalContext = setInterval(() => {
+                sum++;
+                dom.style["max-width"] = `${sum}%`
+                if (sum >= 100) {
+                    sum = 0;
+                    clearInterval(intervalContext);
+                    intervalContext = null
+                }
+            }, 1000)
+        }
+    })
+</script>
+
+</html>
