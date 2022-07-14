@@ -165,6 +165,45 @@
 
     </div>
     <button id="play">开始播放</button>
+
+    <div class="real-demand">
+        <label id="label">Label:</label>
+        <div class="real-demand-player">Working here...</div>
+    </div>
+    <button class="real-demand-btn-start" id="start">START</button>
+    <script>
+        (() => {
+            const $btnStart = document.querySelector('#start')
+            const $label = document.querySelector('#label')
+            const nameList = [
+                'Join',
+                'Janie Doyle',
+                'Misty Bednar',
+                'Manuel Prosacco',
+                'Jay Kassulke',
+                'Tony Wyman MD',
+                'Carole Orn DDS',
+                'Cecelia Heaney',
+                'Shari Jacobs'
+            ]
+            const state = { playing: false, percent: 0, timer: 0 }
+            $btnStart.addEventListener('click', () => {
+                if (state.playing) {
+                    state.percent = 0
+                    window.clearInterval(state.timer)
+                    state.timer = 0
+                } else {
+                    state.timer = window.setInterval(() => {
+                        $label.innerText = nameList[Math.floor(Math.random() * nameList.length)] + ':'
+                        // some codes...
+                    }, 500)
+                }
+
+                $btnStart.innerText = state.playing ? 'STOP' : 'START'
+                state.playing = !state.playing
+            })
+        })()
+    </script>
 </body>
 <script>
     const play = document.querySelector("#play")
